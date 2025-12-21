@@ -1,0 +1,54 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e5]:
+    - generic [ref=e7]:
+      - link "Automation Automation Practice":
+        - /url: ""
+        - generic [ref=e8] [cursor=pointer]:
+          - heading "Automation" [level=3] [ref=e9]
+          - paragraph [ref=e10]: Automation Practice
+    - text: 
+    - list [ref=e11]:
+      - listitem [ref=e12] [cursor=pointer]:
+        - button " HOME" [ref=e13]:
+          - generic [ref=e14]: 
+          - text: HOME
+      - listitem
+      - listitem [ref=e15] [cursor=pointer]:
+        - button " ORDERS" [ref=e16]:
+          - generic [ref=e17]: 
+          - text: ORDERS
+      - listitem [ref=e18] [cursor=pointer]:
+        - button " Cart" [ref=e19]:
+          - generic [ref=e20]: 
+          - text: Cart
+      - listitem [ref=e21] [cursor=pointer]:
+        - button "Sign Out" [ref=e22]:
+          - generic [ref=e23]: 
+          - text: Sign Out
+  - generic [ref=e27]:
+    - link "Continue Shopping❯" [ref=e28] [cursor=pointer]:
+      - /url: "#/dashboard"
+    - generic [ref=e29]:
+      - heading "iphone 13 pro" [level=2] [ref=e30]
+      - heading "$ 55000" [level=3] [ref=e31]
+      - button "Add to Cart" [ref=e33] [cursor=pointer]
+      - generic [ref=e34]:
+        - heading "product details" [level=6] [ref=e35]
+        - paragraph [ref=e36]: Apple phone
+      - generic [ref=e37]:
+        - heading "Share It" [level=6] [ref=e38]
+        - list [ref=e40]:
+          - listitem [ref=e41]:
+            - generic [ref=e43]: 
+          - listitem [ref=e44]:
+            - generic [ref=e46]: 
+          - listitem [ref=e47]:
+            - generic [ref=e49]: 
+          - listitem [ref=e50]:
+            - generic [ref=e52]: 
+          - listitem [ref=e53]:
+            - generic [ref=e55]: 
+```
