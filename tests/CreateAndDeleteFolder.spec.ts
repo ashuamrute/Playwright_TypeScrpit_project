@@ -15,12 +15,12 @@ test('Create and delete folder', { tag: "@CreateDeleteFol" }, async ({ page }) =
 //  what is slowMo - slows the execution time between each actions, it has to set in config.ts
 
     // Verify title
-    await expect.soft(page).toHaveTitle("Box");
+    await expect.soft(page).toHaveTitle("Files | Powered by Box");
 
     // Create folder
     // await page.locator("button[aria-label='New']").waitFor();
     await page.locator("button[aria-label='New']").click();
-    await page.locator("//span[text()='Folder']").click();
+    await page.locator('//li[@data-target-id="MenuItem-newfolder"]').click();
     const folderName = "Test" + Math.floor(Math.random() * 1000);
     await page.locator("//input[@name='folder-name']").fill(folderName);
 

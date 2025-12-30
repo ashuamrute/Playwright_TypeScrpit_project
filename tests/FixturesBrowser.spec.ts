@@ -1,10 +1,14 @@
 import test, { chromium, firefox, webkit } from "@playwright/test";
 
+//--start-maximized → tells Chromium/Edge to open maximized.
+// viewport: null → ensures Playwright doesn’t override the window size.
+
 test('Create a fixture to launch chromium',async ()=>{
     const browser = await chromium.launch({
-        headless:false
+        headless:false, 
+        args:['--start-maximized']
     });
-    const bContext = await browser.newContext();
+    const bContext = await browser.newContext({viewport:null});
     const page = await bContext.newPage();
     await page.goto("https://app.box.com");
     const title= await page.title();
@@ -15,7 +19,8 @@ test('Create a fixture to launch chromium',async ()=>{
 // Firefox 
 test('Create a fixture firefox',async ()=>{
     const browser = await firefox.launch({
-        headless:false
+        headless:false,
+        args:['--start-maximized']
     });
     const bContext = await browser.newContext();
     const page = await bContext.newPage();
@@ -30,9 +35,10 @@ test('Create a fixture firefox',async ()=>{
  
 test('Create a fixture webkit',async ()=>{
     const browser = await webkit.launch({
-        headless:false
+        headless:false,
+        args:['--start-maximized']
     });
-    const bContext = await browser.newContext();
+    const bContext = await browser.newContext({viewport:null});
     const page = await bContext.newPage();
     await page.goto("https://app.box.com");
     const title= await page.title();
@@ -41,7 +47,7 @@ test('Create a fixture webkit',async ()=>{
 });
 
 test('Browser fixture', async({browser})=>{
-const bContext = await browser.newContext();   
+const bContext = await browser.newContext({viewport:{ width: 1920, height: 1080 }});   //If you want a custom “maximized” size:
 const page = await bContext.newPage();
 await page.goto("https://app.box.com");
     const title= await page.title();

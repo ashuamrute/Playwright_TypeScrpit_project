@@ -30,6 +30,10 @@ export default defineConfig({
   reporter: [['html'],['line'],['allure-playwright']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    // viewport:null,
+    launchOptions: { headless: false, 
+      // args: ['--start-maximized'], 
+    },
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
     screenshot:"only-on-failure",

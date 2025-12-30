@@ -27,7 +27,8 @@ test('Box create delete folder', { tag: "@smoke1" }, async ({page}) => {
         
     });
     await test.step('Select folder', async () => {
-       await page.locator("//span[text()='Folder']").click();
+        await page.locator('//li[@data-target-id="MenuItem-newfolder"]').click();
+    //    await page.locator("//span[text()='Folder']").click();
    
     });
     await test.step('Enter folder name', async () => {   
