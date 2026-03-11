@@ -18,13 +18,13 @@ test.beforeEach(async ({ page }) => {
 test('Login with valid credentials', async () => {
 
    await loginPage.validLogin(userEmail, userPassword)
-   await expect(loginPage.HomePageIndetifier).toBeVisible()
+   await expect.soft(loginPage.HomePageIndetifier).toBeVisible()
 
 })
 
 test('Login with Invalid credentials', async () => {
 
    await loginPage.InvalidLogin(userEmail, InvalidPassword)
-   await expect(loginPage.ErrorMassgae).toHaveText(' Incorrect email or password. ')
+   await expect.soft(loginPage.ErrorMassgae).toHaveText(' Incorrect email or password. ')
 
 })

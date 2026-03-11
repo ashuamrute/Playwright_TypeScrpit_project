@@ -5,16 +5,12 @@ import { defineConfig, devices } from '@playwright/test';
  * https://github.com/motdotla/dotenv
  */
 // import dotenv from 'dotenv';
-// import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  expect:{
-    timeout:10000
-  },
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -23,51 +19,67 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : 1,
-  timeout: 90000,
-
+  workers: process.env.CI ? 3 : 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html'],['line'],['allure-playwright']],
+  reporter: [
+    ['html',{open:'never'}],
+    ['list'],
+    ['json', {  outputFile: 'test-results.json' }],
+    ['allure-playwright', {  outputFolder: 'allure-results' }]
+  ],
+   /* You can change the  default timeout duration which is 30000 ms */
+  timeout:90000,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    // viewport:null,
-    launchOptions: { headless: false, 
-      // args: ['--start-maximized'], 
-    },
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
-    screenshot:"on",
-    video:"on",
-    headless: false,   // 👈 This shows the browser
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    // baseURL: 'http://127.0.0.1:3000',
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    baseURL: 'https://simple-books-api.glitch.me',
+    extraHTTPHeaders:{
+
+    },
+    screenshot:'on',
+    video:'on',
     trace: 'on-first-retry',
+    launchOptions:{
+      slowMo:800,
+    },
+    /* change headless option. Default is true. */
+    headless:false,
   },
 
   /* Configure projects for major browsers */
   projects: [
-
     {
       name: 'chromium',
-      //   use: { ...devices['Desktop Chrome'] },
+      // use: { ...devices['Desktop Chrome'] },
       use: { channel: "chrome",
-        launchOptions:{slowMo:200}
+        launchOptions:{
+          slowMo:800,
         },
+       },
       
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] ,
+        launchOptions:{
+          slowMo:250,
+        },
+      },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
-    // {
-    //   name: 'MSEdge',
-    //   use: { channel: 'msedge' },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] ,
+        launchOptions:{
+          slowMo:250,
+        },
+      },
+    },
+
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
@@ -92,7 +104,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
+  //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
 });

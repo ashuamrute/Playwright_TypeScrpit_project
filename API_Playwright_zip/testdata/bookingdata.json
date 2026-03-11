@@ -1,0 +1,25 @@
+{
+    "postcalldata":{
+        "firstname" : "John",
+        "lastname" : "Deere",
+        "totalprice" : 100000,
+        "depositpaid" : true,
+        "bookingdates" : {
+            "checkin" : "2026-01-01",
+            "checkout" : "2026-01-04"
+        },
+        "additionalneeds" : "Breakfast"
+    },
+    "putcalldata":{
+        "firstname" : "SLB",
+        "lastname" : "Magarpatta",
+        "totalprice" : 100000,
+        "depositpaid" : true,
+        "bookingdates" : {
+            "checkin" : "2026-01-01",
+            "checkout" : "2026-01-04"
+        },
+        "additionalneeds" : "Breakfast"
+    }
+    
+}
